@@ -1,5 +1,5 @@
 
-convert
+convert /?
 
 <# Отримуємо інформацію про операційну систему
 $os = Get-CimInstance -ClassName Win32_OperatingSystem
