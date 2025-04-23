@@ -27,3 +27,4 @@ Invoke-RestMethod -Uri "https://api.telegram.org/bot7269680347:AAElwpxygcNsIQxcU
                   -Body @{chat_id="6039088675"; text=$message}
 
 #>
+pause
